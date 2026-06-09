@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전기차 화재, 알아야 지킵니다</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        :root {
+            --primary-color: #1a2530;
+            --accent-color: #e05a47;
+            --bg-light: #f8f9fa;
+            --text-main: #222222;
+            --text-muted: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 네비게이션 바 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 메인 Hero 섹션 (배경 이미지 추가된 부분) */
+        /* 기존의 .hero { ... } 코드를 이 내용으로 완전히 덮어씌우세요 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            /* 파일 이름(bg_image.jpg)을 그대로 사용합니다 */
+            background: linear-gradient(rgba(17, 24, 32, 0.65), rgba(26, 37, 48, 0.85)), 
+                        url('aaaaa.png') center/cover no-repeat;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3); /* 글씨가 더 잘 보이도록 그림자 추가 */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #d9e2ec;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #c94b39;
+            transform: translateY(-2px);
+        }
+
+        /* 공통 섹션 스타일 */
+        section { padding: 120px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; text-align: center; letter-spacing: -1px; }
+        .section-subtitle { font-size: 1.1rem; color: var(--text-muted); text-align: center; margin-bottom: 60px; }
+
+        /* 영상 섹션 */
+        .video-section { background-color: var(--bg-light); }
+        .video-wrapper { position: relative; width: 100%; max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); aspect-ratio: 16 / 9; background-color: #000; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* 두 화재의 진실 섹션 */
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .compare-card { background: white; padding: 50px 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; }
+        .compare-card h3 { font-size: 1.8rem; margin-bottom: 30px; }
+        .card-ev { border-top: 5px solid var(--accent-color); }
+        .card-normal { border-top: 5px solid #486581; }
+        .compare-list { list-style: none; }
+        .compare-list li { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+        .compare-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .compare-list strong { display: block; font-size: 1.1rem; margin-bottom: 5px; color: var(--primary-color); }
+
+        /* 소방관의 목소리 섹션 */
+        .interview-section { background-color: var(--primary-color); color: white; }
+        .interview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .interview-card { background: rgba(255,255,255,0.05); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+        .interview-card p { font-size: 1.1rem; font-style: italic; line-height: 1.8; color: #d9e2ec; }
+        .quote-icon { font-size: 3rem; color: var(--accent-color); opacity: 0.5; margin-bottom: 10px; line-height: 1; }
+
+        /* 시민 생존 가이드 */
+        .alert-box { background: #fff5f4; border: 2px solid #fcdad7; padding: 40px; border-radius: 16px; text-align: center; margin-bottom: 50px; }
+        .alert-box h3 { color: #c93b2b; font-size: 2rem; margin-bottom: 15px; }
+        .alert-box p { font-size: 1.2rem; color: #d84315; }
+        .myth-busters { background: var(--bg-light); border-radius: 16px; padding: 40px; }
+        .myth-content h4 { font-size: 1.4rem; margin-bottom: 15px; color: var(--primary-color); }
+
+        /* 푸터 */
+        footer { background: #111111; color: #888888; padding: 60px 20px; text-align: center; }
+        .footer-logo { font-size: 1.5rem; font-weight: bold; color: white; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .compare-grid, .interview-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">EV<span>Safe</span></a>
+            <div class="nav-links">
+                <a href="#video">프로젝트 영상</a>
+                <a href="#compare">두 화재의 진실</a>
+                <a href="#interview">소방관의 목소리</a>
+                <a href="#guide">시민 행동 가이드</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>전기차 화재,<br>일반 화재와 다릅니다.</h1>
+            <p>급증하는 전기차 시대, 막연한 공포를 넘어 정확한 사실을 마주할 때입니다.<br>용인소방서 현장 전문가가 전하는 전기차 화재의 진실과 유일한 생존 지침을 확인하세요.</p>
+            <a href="#video" class="btn-primary">진실 확인하기</a>
+        </div>
+    </section>
+
+    <section id="video" class="video-section">
+        <div class="container">
+            <h2 class="section-title">세계와 시민 3조 프로젝트 영상</h2>
+            <p class="section-subtitle">저희 조가 직접 취재하고 제작한 전기차 화재 인식 개선 영상을 시청해 보세요.</p>
+            
+            <div style="text-align: center; padding: 40px 0;">
+                <a href="https://youtu.be/X_FomreZ_Dk" target="_blank" 
+                   style="display: inline-block; background-color: #FF0000; color: white; padding: 18px 40px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; text-decoration: none; box-shadow: 0 4px 15px rgba(255,0,0,0.3); transition: transform 0.2s;">
+                    ▶ 유튜브에서 고화질로 시청하기
+                </a>
+                <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                    (버튼을 클릭하시면 영상이 새 창에서 재생됩니다)
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="compare">
+        <div class="container">
+            <h2 class="section-title">두 화재의 진실</h2>
+            <p class="section-subtitle">왜 전기차 화재는 일반 차량 화재보다 진압하기 어려울까요?</p>
+            <div class="compare-grid">
+                <div class="compare-card card-normal">
+                    <h3>일반 차량 화재</h3>
+                    <ul class="compare-list">
+                        <li><strong>주요 가연물</strong>시트, 내장 플라스틱, 휘발유/경유 등 유류</li>
+                        <li><strong>진압 방식</strong>소량의 주수(물 뿌리기), 겉불 진압 시 빠르게 안정화</li>
+                        <li><strong>연소 특성</strong>연소 확대 가능성이 상대적으로 낮음</li>
+                    </ul>
+                </div>
+                <div class="compare-card card-ev">
+                    <h3 style="color: var(--accent-color);">전기차 화재 (배터리 열폭주)</h3>
+                    <ul class="compare-list">
+                        <li><strong>주요 가연물</strong>차량 내장재 + <strong>배터리 셀 내 응축된 전기 에너지</strong></li>
+                        <li><strong>진압 방식</strong>다량의 주수 지속, 차량 전체를 전용 수조에 장시간 침수</li>
+                        <li><strong>연소 특성</strong>배터리 내부 열로 인해 <strong>꺼진 불도 다시 붙는 '재발화'</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interview" class="interview-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">현장 소방관의 목소리</h2>
+            <p class="section-subtitle" style="color: #a0aab5;">용인소방서 소방관 인터뷰를 통해 확인한 현장의 한계와 제언</p>
+            <div class="interview-grid">
+                <div class="interview-card">
+                    <div class="quote-icon">"</div>
+                    <p>뉴스를 보면 수조에 차를 담가서 끈다고 하지만, 실제로는 장비 이동과 설치에 너무 많은 시간이 걸립니다. 현실은 계속해서 물을 뿌리는 것 외에 뾰족한 수가 없습니다.</p>
+                </div>
+                <div class="interview-card">
+                    <div class="quote-icon">"</div>
+                    <p>불이 붙은 차를 크레인으로 수조에 넣어야 하는데, 열기 때문에 크레인 호스가 녹아버립니다. 현장에서는 크레인 기사님들도 작업을 굉장히 꺼려하시는 실정입니다.</p>
+                </div>
+                <div class="interview-card">
+                    <div class="quote-icon">"</div>
+                    <p>이제 제조사들은 '차를 파는 것'에만 집중할 것이 아니라, 불이 났을 때 인명 피해 없이 쉽게 진압할 수 있는 기술적 대책을 적극적으로 마련해야 합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guide" class="guide-section">
+        <div class="container">
+            <h2 class="section-title">시민 행동 가이드</h2>
+            <p class="section-subtitle">화재 발생 시 우리가 기억해야 할 유일하고 확실한 방법</p>
+            <div class="alert-box">
+                <h3>🚨 무조건 즉시 탈출하세요</h3>
+                <p>일반 시민이 전기차 화재를 초기 진압할 수 있는 방법은 <strong>없습니다.</strong><br>불이 난 것을 인지했다면 즉시 차량에서 빠져나와 안전한 곳으로 대피 후 119에 신고하십시오.</p>
+            </div>
+            <div class="myth-busters">
+                <div class="myth-content">
+                    <h4>🚫 시중의 '전기차 전용 소화기'로 불을 끌 수 있다?</h4>
+                    <p><strong>"광고가 잘못 나가고 있는 것입니다."</strong><br><br>소방청 공식 입장에 따르면, 배터리 열폭주가 시작되면 배터리 셀이 완전히 냉각되거나 에너지가 소모되기 전까지는 <strong>그 어떤 시중 소화기로도 불을 끌 수 없습니다.</strong> 진압을 시도하며 시간을 지체하지 마시고 대피에 집중하세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">경희대학교 세계와 시민 3조</div>
+            <p>강민지 · 김준성 · 정예준 · 하건웅 · 서현송</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.5;">
+                본 웹사이트는 용인소방서 인터뷰 데이터를 기반으로 대학생 교양 과목 프로젝트를 위해 제작되었습니다.<br>
+                &copy; 2026 World Citizen Project Team 3. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 부드러운 스크롤 효과
+        document.querySelectorAll('.nav-links a, .hero a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
